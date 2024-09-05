@@ -1,18 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
 export const fetchUpcomingMovies = createAsyncThunk(
   "movies/fetchUpcomingMovies",
-  async () => {
-    const data = await fetchData(`/movie/upcoming`);
-    return data.results;
+  async (params?:string) => {
+    const data = await fetchData(`/movie/upcoming`,params);
+    return data;
   }
 );
 
 interface UpcomingState {
-  movies: Movie[] | null;
+  movies: {
+    page: number;
+    results: MediaItemType[];
+    total_pages: number;
+    total_results: number;
+  } | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
 }
@@ -45,9 +50,6 @@ const upcomingSlice = createSlice({
 
 export default upcomingSlice.reducer;
 
-export const selectUpcomingMovies = (state: RootState) =>
-  state.upcoming.movies;
-export const selectUpcomingStatus = (state: RootState) =>
-  state.upcoming.status;
-export const selectUpcomingError = (state: RootState) =>
-  state.upcoming.error;
+export const selectUpcomingMovies = (state: RootState) => state.upcoming.movies;
+export const selectUpcomingStatus = (state: RootState) => state.upcoming.status;
+export const selectUpcomingError = (state: RootState) => state.upcoming.error;

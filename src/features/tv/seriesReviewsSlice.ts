@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { ReviewsResponse } from "@/types";
 import { RootState } from "@/store";
 
 export const fetchSeriesReviews = createAsyncThunk(
   "SeriesReviews/fetchSeriesReviews",
-  async (seriesId: number) => {
-    const data = await fetchData(`/tv/${seriesId}/reviews`);
+  async ({seriesId , params}:{seriesId:number,params?:string}) => {
+    const data = await fetchData(`/tv/${seriesId}/reviews`,params);
     return data;
   }
 );
@@ -15,7 +15,7 @@ export const fetchSeriesReviews = createAsyncThunk(
 export interface SeriesReviewsState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
-  reviews: Movie[] | null;
+  reviews: ReviewsResponse | null;
 }
 
 const initialState: SeriesReviewsState = {
@@ -34,7 +34,7 @@ export const SeriesReviewsSlice = createSlice({
     });
     builder.addCase(fetchSeriesReviews.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.reviews = action.payload.results;
+      state.reviews = action.payload;
     });
     builder.addCase(fetchSeriesReviews.rejected, (state, action) => {
       state.status = "failed";

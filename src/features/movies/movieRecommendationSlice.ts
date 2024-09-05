@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 import { RootState } from "@/store";
 
 export const fetchMovieRecommendations = createAsyncThunk(
@@ -14,7 +15,7 @@ export const fetchMovieRecommendations = createAsyncThunk(
 export interface MovieRecommendationsState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
-  recommendations: Movie[] | null;
+  recommendations: MediaItemType[] | null;
 }
 
 const initialState: MovieRecommendationsState = {

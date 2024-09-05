@@ -2,34 +2,30 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie, MovieDetails } from "@/types";
+import { MovieDetails } from "@/types";
 
 export const fetchSeriesDetails = createAsyncThunk(
-  "movies/fetchMoviesDetails",
+  "series/fetchSeriesDetails",
   async (seriesId: number) => {
     const data = await fetchData(`/tv/${seriesId}`);
     return data;
   }
 );
 
-export interface MoviesState {
+export interface SeriesState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
   seriesDetails: MovieDetails | null;
-  recommendations: Movie[] | null;
-  reviews: Movie[] | null;
 }
 
-const initialState: MoviesState = {
+const initialState: SeriesState = {
   seriesDetails: null,
-  recommendations: [],
-  reviews: [],
   status: "idle",
   error: null,
 };
 
-export const moviesDetailsSlice = createSlice({
-  name: "movies",
+export const seriesDetailsSlice = createSlice({
+  name: "series",
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -47,9 +43,9 @@ export const moviesDetailsSlice = createSlice({
   },
 });
 
-export const {} = moviesDetailsSlice.actions;
+export const {} = seriesDetailsSlice.actions;
 
-export default moviesDetailsSlice.reducer;
+export default seriesDetailsSlice.reducer;
 
 export const getSeriesDetails = (state: RootState) =>
   state.seriesDetails.seriesDetails;
@@ -57,6 +53,3 @@ export const getSeriesDetailsStatus = (state: RootState) =>
   state.seriesDetails.status;
 export const getSeriesDetailsError = (state: RootState) =>
   state.seriesDetails.error;
-
-export const getMovieRecommendations = (state: RootState) =>
-  state.seriesDetails.recommendations;

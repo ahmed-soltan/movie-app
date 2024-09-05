@@ -26,14 +26,18 @@ const LoginForm = () => {
     },
   });
 
-  const dispatch = useDispatch<AppDispatch>()
-  const navigate = useNavigate()
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const isSubmitting = form.formState.isSubmitting;
 
   const onSubmit = async (data: z.infer<typeof loginSchema>) => {
-    dispatch(loginUser(data))
-    navigate("/")
+    try {
+      dispatch(loginUser(data));
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

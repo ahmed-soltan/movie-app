@@ -1,8 +1,8 @@
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-import { MovieCard } from "@/components/cards/movie-card";
-import { usePopularMovies } from "@/hooks/use-popular-movies";
+import { MediaItemCard } from "@/components/cards/media-item-card";
+import { usePopularMovies } from "@/hooks/movies/use-popular-movies";
 
 const PopularMovies = () => {
   const { data } = usePopularMovies();
@@ -32,7 +32,7 @@ const PopularMovies = () => {
         style={{ scrollbarWidth: "none" }}
       >
         {PopularMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MediaItemCard key={movie.id} media={movie} path="/movies"/>
         ))}
       </div>
     </div>

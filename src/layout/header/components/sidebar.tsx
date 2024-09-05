@@ -14,18 +14,9 @@ const initialSidebarRoutes = [
   {
     title: "Movies",
     routes: [
-      { title: "Popular Movies", path: "/popular" },
-      { title: "Upcoming Movies", path: "/upcoming" },
-      { title: "Top Rated Movies", path: "/top-rated" },
-    ],
-  },
-  {
-    title: "TV Series",
-    routes: [
-      { title: "Popular Series", path: "/series/popular" },
-      { title: "Top Rated Series", path: "/series/top-rated" },
-      { title: "Airing Today", path: "/series/airing-today" },
-      { title: "On The Air", path: "/series/on-the-air" },
+      { title: "Popular Movies", path: "/movies/popular" },
+      { title: "Upcoming Movies", path: "/movies/upcoming" },
+      { title: "Top Rated Movies", path: "/movies/top-rated" },
     ],
   },
 ];
@@ -59,7 +50,7 @@ const Sidebar = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <IoMenu className="w-10 h-10 text-white cursor-pointer" />
+        <IoMenu className="w-7 md:w-10 h-7 md:h-10 text-white cursor-pointer" />
       </SheetTrigger>
       <SheetContent
         side={"left"}

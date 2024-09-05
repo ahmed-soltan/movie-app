@@ -1,6 +1,7 @@
-import { useUser } from "@/hooks/use-user";
 import { PropsWithChildren, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useUser } from "@/hooks/use-user";
 
 type ReverseGuardedRouteProps = PropsWithChildren;
 

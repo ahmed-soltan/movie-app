@@ -1,18 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
 export const fetchTopRatedMovies = createAsyncThunk(
   "movies/fetchTopRatedMovies",
-  async () => {
-    const data = await fetchData(`/movie/top_rated`);
-    return data.results;
+  async (params?: string) => {
+    const data = await fetchData(`/movie/top_rated`, params);
+    return data;
   }
 );
 
 interface TopRatedState {
-  movies: Movie[] | null;
+  movies: {
+    page: number;
+    results: MediaItemType[];
+    total_pages: number;
+    total_results: number;
+  } | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
 }
@@ -45,9 +50,6 @@ const topRatedSlice = createSlice({
 
 export default topRatedSlice.reducer;
 
-export const selectTopRatedMovies = (state: RootState) =>
-  state.topRated.movies;
-export const selectTopRatedStatus = (state: RootState) =>
-  state.topRated.status;
-export const selectTopRatedError = (state: RootState) =>
-  state.topRated.error;
+export const selectTopRatedMovies = (state: RootState) => state.topRated.movies;
+export const selectTopRatedStatus = (state: RootState) => state.topRated.status;
+export const selectTopRatedError = (state: RootState) => state.topRated.error;

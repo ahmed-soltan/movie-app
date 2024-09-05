@@ -1,35 +1,30 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie, MovieDetails } from "@/types";
+import { MovieDetails } from "@/types";
 
 export const fetchMovieDetails = createAsyncThunk(
-  "movies/fetchMoviesDetails",
-  async (movieId: number) => {
+  "movieDetails/fetchMovieDetails",
+  async (movieId: string) => {
     const data = await fetchData(`/movie/${movieId}`);
     return data;
   }
 );
 
-export interface MoviesState {
+export interface MovieState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
   movieDetails: MovieDetails | null;
-  recommendations: Movie[] | null;
-  reviews: Movie[] | null;
 }
 
-const initialState: MoviesState = {
+const initialState: MovieState = {
   movieDetails: null,
-  recommendations: [],
-  reviews: [],
   status: "idle",
   error: null,
 };
 
-export const moviesDetailsSlice = createSlice({
-  name: "movies",
+export const movieDetailsSlice = createSlice({
+  name: "movieDetails",
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -47,16 +42,8 @@ export const moviesDetailsSlice = createSlice({
   },
 });
 
-export const {} = moviesDetailsSlice.actions;
+export default movieDetailsSlice.reducer;
 
-export default moviesDetailsSlice.reducer;
-
-export const getMovieDetails = (state: RootState) =>
-  state.movieDetails.movieDetails;
-export const getMovieDetailsStatus = (state: RootState) =>
-  state.movieDetails.status;
-export const getMovieDetailsError = (state: RootState) =>
-  state.movieDetails.error;
-
-export const getMovieRecommendations = (state: RootState) =>
-  state.movieDetails.recommendations;
+export const getMovieDetails = (state: RootState) => state.movieDetails.movieDetails;
+export const getMovieDetailsStatus = (state: RootState) => state.movieDetails.status;
+export const getMovieDetailsError = (state: RootState) => state.movieDetails.error;

@@ -1,6 +1,7 @@
-import { useUser } from "@/hooks/use-user";
 import { PropsWithChildren, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useUser } from "@/hooks/use-user";
 
 type GuardedRouteProps = PropsWithChildren;
 
@@ -10,7 +11,7 @@ export const GuardedRoute = ({ children }: GuardedRouteProps) => {
 
   useEffect(() => {
     if (user === null) {
-      navigate("/login", { replace: true });
+      navigate("/profile/login", { replace: true });
     }
   }, [user, navigate]);
 

@@ -6,7 +6,7 @@ import { IoEnterOutline } from "react-icons/io5";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useUser } from "@/hooks/use-user";
 import {
@@ -20,7 +20,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const UserButton = () => {
-  const { user } = useUser();
+  const { user, logoutUser } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logoutUser();
+    navigate("/");
+  };
 
   return (
     <DropdownMenu>
@@ -31,16 +37,21 @@ const UserButton = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         ) : (
-          <FaRegUserCircle className="w-8 h-8 text-white" />
+          <FaRegUserCircle className="w-6 md:w-8 h-6 md:h-8 text-white" />
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="px-0 w-[170px] bg-[#1c1c1c] text-white border-slate-700">
+      <DropdownMenuContent className="px-0 w-[170px] bg-[#1c1c1c] text-[#b9b9b9] border-slate-700">
         {user && (
           <>
-        <DropdownMenuLabel>Signed in as</DropdownMenuLabel>
-        <DropdownMenuLabel className="py-0 font-normal">{user.email}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
+            <DropdownMenuLabel>Signed in as</DropdownMenuLabel>
+            <DropdownMenuLabel className="py-0 font-normal">
+              {user.email}
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white"
+              asChild
+            >
               <Link
                 className="flex items-center text-md cursor-pointer"
                 to="/profile"
@@ -49,7 +60,10 @@ const UserButton = () => {
                 Profile
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white"
+              asChild
+            >
               <Link
                 className="flex items-center text-md cursor-pointer"
                 to="/profile/favorite-list"
@@ -58,7 +72,10 @@ const UserButton = () => {
                 Favorite List
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white"
+              asChild
+            >
               <Link
                 className="flex items-center text-md cursor-pointer"
                 to="/profile/watch-list"
@@ -67,7 +84,10 @@ const UserButton = () => {
                 Watch List
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white"
+              asChild
+            >
               <Link
                 className="flex items-center text-md cursor-pointer"
                 to="/profile/history-list"
@@ -76,22 +96,23 @@ const UserButton = () => {
                 History List
               </Link>
             </DropdownMenuItem>
-        <DropdownMenuSeparator />
-            
-            <DropdownMenuItem asChild>
-              <Link
-                className="flex items-center text-md cursor-pointer"
-                to="#"
-              >
-                <RiLogoutBoxLine className="w-4 h-4 mr-2" />
-                Logout
-              </Link>
+            <DropdownMenuSeparator />
+
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white flex items-center text-md cursor-pointer"
+              onClick={handleLogout}
+            >
+              <RiLogoutBoxLine className="w-4 h-4 mr-2" />
+              Logout
             </DropdownMenuItem>
           </>
         )}
         {!user && (
           <>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white"
+              asChild
+            >
               <Link
                 className="flex items-center text-md cursor-pointer"
                 to="/profile/login"
@@ -100,7 +121,10 @@ const UserButton = () => {
                 Login
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem
+              className="focus:bg-slate-500/20 focus:text-white"
+              asChild
+            >
               <Link
                 className="flex items-center text-md cursor-pointer"
                 to="/profile/register"

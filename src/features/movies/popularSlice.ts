@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
 export const fetchPopularMovies = createAsyncThunk(
   "movies/fetchPopularMovies",
-  async () => {
-    const data = await fetchData(`/movie/popular`);
+  async (params?:string) => {
+    const data = await fetchData(`/movie/popular` , params);
     return data;
   }
 );
@@ -15,7 +15,7 @@ export const fetchPopularMovies = createAsyncThunk(
 interface PopularState {
   movies:  {
     page:number;
-    results:Movie[];
+    results:MediaItemType[];
     total_pages: number;
     total_results: number;
   } | null;

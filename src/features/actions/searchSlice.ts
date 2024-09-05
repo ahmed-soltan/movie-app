@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
 export const searchMulti = createAsyncThunk(
   "search/searchMulti",
@@ -13,7 +13,7 @@ export const searchMulti = createAsyncThunk(
 );
 
 export interface SearchState {
-  searchResults: Movie[];
+  searchResults: MediaItemType[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
 }

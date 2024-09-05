@@ -81,7 +81,7 @@ export const usersSlice = createSlice({
           description: "Please check your credentials",
           variant: "destructive",
         });
-        return;
+        throw new Error("Invalid email or password")      
       }
 
       if (bcrypt.compareSync(action.payload.password , user.password)) {
@@ -101,8 +101,7 @@ export const usersSlice = createSlice({
         description: "Please check your credentials",
         variant: "destructive",
       });
-      return;
-      
+      throw new Error("Invalid email or password")      
     },
   },
 });

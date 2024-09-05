@@ -4,23 +4,26 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { store } from "./store";
 import { Toaster } from "./components/ui/toaster";
 import { GuardedRoute } from "./components/GuardedRoute";
+import { ReverseGuardedRoute } from "./components/ReverseGuardedRoute";
 
 import HomePage from "./pages/home/pages/homePage";
 import MoviesPage from "./pages/movies/pages/moviesPage";
 import BaseLayout from "./layout/base-layout";
-import TopRatedPage from "./pages/topRated/pages/TopRatedPage";
-import PopularPage from "./pages/popular/pages/PopularPage";
 import ProfilePage from "./pages/profile/pages/ProfilePage";
 import FavoriteListPage from "./pages/profile/pages/FavoriteListPage";
 import WatchListPage from "./pages/profile/pages/WatchListPage";
 import HistoryListPage from "./pages/profile/pages/HistoryListPage";
-import { ReverseGuardedRoute } from "./components/ReverseGuardedRoute";
 import LoginPage from "./pages/profile/pages/loginPage/LoginPage";
 import RegisterPage from "./pages/profile/pages/registerPage/RegisterPage";
-import MovieDetailsPage from "./pages/movies/pages/MovieDetailsPage";
-import SeriesDetailsPage from "./pages/tv/pages/SeriesDetailsPage";
-import SeriesPage from "./pages/tv/pages/SeriesPage";
+import SeriesDetailsPage from "./pages/tv/pages/SeriesDetailsPage/SeriesDetailsPage";
+import SeriesPage from "./pages/tv/pages/SeriesPage/SeriesPage";
 import PlayingNowMoviesPage from "./pages/movies/pages/PlayingNowMoviesPage/PlayingNowMoviesPage";
+import MovieDetailsPage from "./pages/movies/pages/MovieDetailsPage/MovieDetailsPage";
+import PopularMoviesPage from "./pages/movies/pages/PopularMoviesPage/PopularMoviesPage";
+import TopRatedMoviesPage from "./pages/movies/pages/TopRatedMoviesPage/TopRatedMoviesPage";
+import UpComingMoviesPage from "./pages/movies/pages/upcomingMoviesPage/UpComingMoviesPage";
+import SeasonDetailsPage from "./pages/tv/pages/SeasonDetailsPage.tsx/SeasonDetailsPage";
+import EpisodeDetailsPage from "./pages/tv/pages/EpisodeDetailsPage/EpisodeDetailsPage";
 
 function App() {
   return (
@@ -30,12 +33,24 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
-            <Route path="/movies/:id" element={<MovieDetailsPage />} />
-            <Route path="/tv" element={<SeriesPage />} />
-            <Route path="/tv/:id" element={<SeriesDetailsPage />} />
-            <Route path="/movies/top-rated" element={<TopRatedPage />} />
-            <Route path="/movies/popular" element={<PopularPage />} />
-            <Route path="/movies/playing-now" element={<PlayingNowMoviesPage />} />
+            <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
+            <Route path="/movies/top-rated" element={<TopRatedMoviesPage />} />
+            <Route path="/movies/popular" element={<PopularMoviesPage />} />
+            <Route path="/movies/upcoming" element={<UpComingMoviesPage />} />
+            <Route
+              path="/movies/playing-now"
+              element={<PlayingNowMoviesPage />}
+            />
+            <Route path="/tv/series" element={<SeriesPage />} />
+            <Route path="/tv/series/:id" element={<SeriesDetailsPage />} />
+            <Route
+              path="/tv/series/:id/season/:seasonNumber"
+              element={<SeasonDetailsPage />}
+            />
+            <Route
+              path="/tv/series/:id/season/:seasonNumber/episode/:episodeNumber"
+              element={<EpisodeDetailsPage />}
+            />
             <Route
               path="/profile"
               element={

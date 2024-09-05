@@ -2,17 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
-export const fetchMovies = createAsyncThunk("/movies/fetchMovies", async () => {
-  const data = await fetchData("/discover/movie");
-  return data;
-});
+export const fetchMovies = createAsyncThunk(
+  "/movies/fetchMovies",
+  async (params?: string) => {
+    const data = await fetchData("/discover/movie", params);
+    return data;
+  }
+);
 
 export interface MoviesState {
   movies: {
-    page:number;
-    results:Movie[];
+    page: number;
+    results: MediaItemType[];
     total_pages: number;
     total_results: number;
   } | null;

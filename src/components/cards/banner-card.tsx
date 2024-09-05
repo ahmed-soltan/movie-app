@@ -7,10 +7,10 @@ import { IoMdTrendingUp } from "react-icons/io";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { baseImageUrl } from "@/shared/flags";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
 interface BannerCardProps {
-  movie: Movie;
+  movie: MediaItemType;
 }
 
 export const BannerCard = ({ movie }: BannerCardProps) => {
@@ -34,7 +34,7 @@ export const BannerCard = ({ movie }: BannerCardProps) => {
                 className="text-sm md:text-md p-[5px] bg-slate-900 rounded-md flex 
               items-center"
               >
-                <MdOutlineLanguage className="w-3 h-3 mr-1 mt-1" />
+                <MdOutlineLanguage className="w-3 h-3 mr-1" />
                 {movie.original_language}
               </p>
 
@@ -42,14 +42,14 @@ export const BannerCard = ({ movie }: BannerCardProps) => {
                 className="text-sm md:text-md p-[5px] bg-slate-900 rounded-md flex 
               items-center"
               >
-                <FaRegEye className="w-3 h-3 mr-1 mt-1" />
+                <FaRegEye className="w-3 h-3 mr-1" />
                 {movie.popularity}
               </p>
               <p
                 className="text-sm md:text-md p-[5px] bg-slate-900 rounded-md flex 
               items-center"
               >
-                <IoMdTrendingUp className="w-3 h-3 mr-1 mt-1" />
+                <IoMdTrendingUp className="w-3 h-3 mr-1" />
                 {movie.vote_count}
               </p>
               <p className="text-sm md:text-md p-[5px] bg-slate-900 rounded-md">
@@ -69,9 +69,9 @@ export const BannerCard = ({ movie }: BannerCardProps) => {
               </Link>
             </Button>
           </div>
-          <div className="w-full relative max-w-[1000px]">
+          <div className="w-full relative max-w-[1000px] rounded-xl">
             <img
-              className="w-full h-[300px] md:h-[600px] object-top"
+              className="w-full h-[300px] md:h-[600px] object-top rounded-xl"
               src={`${baseImageUrl}/${movie.poster_path}`}
               alt={movie.original_title}
             />

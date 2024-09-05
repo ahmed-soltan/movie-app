@@ -6,7 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { useMovies } from "@/hooks/use-movies";
+import { useMovies } from "@/hooks/movies/use-movies";
 import { BannerCard } from "../../../components/cards/banner-card";
 
 export const Banner = () => {
@@ -16,12 +16,20 @@ export const Banner = () => {
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
 
+  const handleMouseEnter = () => {
+    plugin.current.stop();
+  };
+
+  const handleMouseLeave = () => {
+    plugin.current.play();
+  };
+
   return (
     <Carousel
       className="w-full max-h-[700px] md:max-h-[630px] p-0"
       plugins={[plugin.current]}
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <CarouselContent
         className="w-full max-h-[700px] md:max-h-[630px] p-0

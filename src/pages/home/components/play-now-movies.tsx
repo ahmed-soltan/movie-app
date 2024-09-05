@@ -1,8 +1,8 @@
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-import { MovieCard } from "@/components/cards/movie-card";
-import { useNowPlayingMovies } from "@/hooks/use-now-playing-movies";
+import { MediaItemCard } from "@/components/cards/media-item-card";
+import { useNowPlayingMovies } from "@/hooks/movies/use-now-playing-movies";
 
 const PlayingNowMovies = () => {
   const { data } = useNowPlayingMovies();
@@ -32,7 +32,7 @@ const PlayingNowMovies = () => {
         style={{ scrollbarWidth: "none" }}
       >
         {playingNowMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MediaItemCard key={movie.id} media={movie} path="/movies"/>
         ))}
       </div>
     </div>

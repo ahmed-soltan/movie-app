@@ -2,21 +2,26 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
 import { fetchData } from "@/utils/fetch-data";
-import { Movie } from "@/types";
+import { MediaItemType } from "@/types";
 
-export const fetchSeries = createAsyncThunk("/series/fetchSeries", async () => {
-  const data = await fetchData("/discover/movie");
+export const fetchSeries = createAsyncThunk("/series/fetchSeries", async (params?:string) => {
+  const data = await fetchData("/discover/tv" , params);
   return data;
 });
 
 export interface seriesState {
-  series: Movie[];
+  series: {
+    page: number;
+    results: MediaItemType[];
+    total_pages: number;
+    total_results: number;
+  } | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
 }
 
 const initialState: seriesState = {
-  series: [],
+  series: null,
   status: "idle",
   error: null,
 };

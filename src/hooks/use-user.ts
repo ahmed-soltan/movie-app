@@ -36,17 +36,18 @@ export const useUser = () => {
 
   const logoutUser = () => {
     delay(1000);
-
+  
     if (!user) {
       return null;
     }
-
-    localStorage.remove("currentUser");
+  
+    localStorage.removeItem("currentUser"); 
     toast({
-      title: "user Logged out",
+      title: "User logged out",
       variant: "destructive",
     });
   };
+  
 
   return {
     user,
