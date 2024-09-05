@@ -15,22 +15,22 @@ const Footer = () => {
         <Logo />
         <ul className="flex items-center md:items-start gap-3 flex-wrap text-gray-400">
           <li>
-            <a href="/about" className="hover:underline">
+            <a href="#" className="hover:underline">
               About Us
             </a>
           </li>
           <li>
-            <a href="/contact" className="hover:underline">
+            <a href="#" className="hover:underline">
               Contact Us
             </a>
           </li>
           <li>
-            <a href="/terms" className="hover:underline">
+            <a href="#" className="hover:underline">
               Terms of Service
             </a>
           </li>
           <li>
-            <a href="/privacy" className="hover:underline">
+            <a href="#" className="hover:underline">
               Privacy Policy
             </a>
           </li>

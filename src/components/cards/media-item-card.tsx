@@ -1,5 +1,6 @@
 import { baseImageUrl } from "@/shared/flags";
 import { MediaItemType } from "@/types";
+import { Link } from "react-router-dom";
 
 type MediaItemCardProps = {
   media: MediaItemType;
@@ -8,8 +9,8 @@ type MediaItemCardProps = {
 
 export const MediaItemCard = ({ media, path }: MediaItemCardProps) => {
   return (
-    <a
-      href={`${path}/${media.id}`}
+    <Link
+      to={`${path}/${media.id}`}
       className="min-w-[280px] max-w-[280px] md:min-w-[300px]
       flex flex-col items-start justify-between gap-3 overflow-y-hidden p-2"
     >
@@ -44,6 +45,6 @@ export const MediaItemCard = ({ media, path }: MediaItemCardProps) => {
           {media.vote_count}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };

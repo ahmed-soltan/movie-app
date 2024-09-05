@@ -68,13 +68,13 @@ const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
         <div className="text-[#777] text-sm">
           genres :{" "}
           {series.genres.map((genre:any) => (
-            <a
-              href={`/series?genres=${genre}`}
+            <Link
+              to={`/series?genres=${genre}`}
               key={genre.id}
               className="text-[#9d6ae4] mx-1 hover:underline"
             >
               {genre.name},
-            </a>
+            </Link>
           ))}
         </div>
         <div className="text-[#777] text-sm">

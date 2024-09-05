@@ -68,13 +68,13 @@ const MovieDetailsCard = ({ movie }: MovieDetailsCardProps) => {
         <div className="text-[#777] text-sm">
           genres :{" "}
           {movie.genres.map((genre:any) => (
-            <a
-              href={`/movie?genres=${genre}`}
+            <Link
+              to={`/movie?genres=${genre}`}
               key={genre.id}
               className="text-[#9d6ae4] mx-1 hover:underline"
             >
               {genre.name},
-            </a>
+            </Link>
           ))}
         </div>
         <div className="text-[#777] text-sm">

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface EpisodesListProps {
   seriesId: string;
@@ -35,11 +36,11 @@ const EpisodesList: React.FC<EpisodesListProps> = ({
             variant={currentEpisode === number ? "primary" : "default"}
             className="w-[68px]"
           >
-            <a
-              href={`/tv/series/${seriesId}/season/${season_number}/episode/${number}`}
+            <Link
+              to={`/tv/series/${seriesId}/season/${season_number}/episode/${number}`}
             >
               {number}
-            </a>
+            </Link>
           </Button>
         ))}
       </div>

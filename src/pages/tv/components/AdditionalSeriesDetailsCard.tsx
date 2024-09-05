@@ -3,6 +3,7 @@ import unknown from "../../../assets/unknown.jpeg";
 import { baseImageUrl } from "@/shared/flags";
 import { Separator } from "@/components/ui/separator";
 import unknownImage from "../../../assets/unknownImage.png"
+import { Link } from "react-router-dom";
 
 interface AdditionalSeriesDetailsCardProps {
   series: TvSeriesDetails;
@@ -47,9 +48,9 @@ const AdditionalSeriesDetailsCard = ({
           style={{ scrollbarWidth: "none" }}
         >
           {series.seasons.map((season) => (
-            <a
+            <Link
               key={season.id}
-              href={`/tv/series/${series.id}/season/${season.season_number}/episode/1`}
+              to={`/tv/series/${series.id}/season/${season.season_number}/episode/1`}
               className="flex flex-col gap-2 items-center min-w-[250px]"
             >
               <img
@@ -68,7 +69,7 @@ const AdditionalSeriesDetailsCard = ({
               <span className="text-sm text-[#888]">
                 Number of Episodes: {season.episode_count}
               </span>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -78,8 +79,8 @@ const AdditionalSeriesDetailsCard = ({
           <h1 className="text-xl font-semibold text-center md:text-left w-full">
             Last Episode To Air{" "}
           </h1>
-          <a
-            href={`/tv/series/${series.id}/season/${series.last_episode_to_air.season_number}/episode/${series.last_episode_to_air.episode_number}`}
+          <Link
+            to={`/tv/series/${series.id}/season/${series.last_episode_to_air.season_number}/episode/${series.last_episode_to_air.episode_number}`}
             className="flex flex-col gap-2 items-center"
           >
             <img
@@ -97,14 +98,14 @@ const AdditionalSeriesDetailsCard = ({
             <span className="text-sm text-[#888]">
               {series.last_episode_to_air.air_date}
             </span>
-          </a>
+          </Link>
         </div>
         <div className="flex flex-col items-start gap-4">
           <h1 className="text-xl font-semibold text-center md:text-left w-full">
             Next Episode To Air{" "}
           </h1>
-          <a
-            href={`/tv/series/${series.id}/season/${series.next_episode_to_air.season_number}/episode/${series.last_episode_to_air.episode_number}`}
+          <Link
+            to={`/tv/series/${series.id}/season/${series.next_episode_to_air.season_number}/episode/${series.last_episode_to_air.episode_number}`}
             className="flex flex-col gap-2 items-center"
           >
             <img
@@ -122,7 +123,7 @@ const AdditionalSeriesDetailsCard = ({
             <span className="text-sm text-[#888]">
               {series.next_episode_to_air.air_date}
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
