@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
 interface VideoProps {
   videoKey: string;
@@ -61,6 +62,9 @@ const VideoPlayer: React.FC<VideoProps> = ({
           onLoad={handleIframeLoad}
         ></iframe>
       )}
+      <Button onClick={handleAutoPlay} className="hidden">
+        Auto play
+      </Button>
     </div>
   );
 };
