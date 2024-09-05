@@ -15,8 +15,8 @@ interface RecommendationCardProps {
 const RecommendationCard = React.memo(
   ({ recommendation, mediaType }: RecommendationCardProps) => {
     return (
-      <Link
-        to={`/${mediaType === "movie" ? "movies" : "tv/series"}/${
+      <a
+        href={`/${mediaType === "movie" ? "movies" : "tv/series"}/${
           recommendation.id
         }`}
         className="flex items-start justify-start gap-1 bg-[#1c1c1c] h-full w-full lg:w-[350px] p-1"
@@ -47,7 +47,7 @@ const RecommendationCard = React.memo(
             </div>
           </div>
         </div>
-      </Link>
+      </a>
     );
   }
 );

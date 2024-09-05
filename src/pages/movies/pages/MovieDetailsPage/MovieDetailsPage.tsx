@@ -5,7 +5,7 @@ import { useMovieDetails } from "@/hooks/movies/use-movie-details";
 import { useVideos } from "@/hooks/use-videos";
 import VideoPlayer from "@/components/video-player";
 import { baseImageUrl } from "@/shared/flags";
-import MoviesDetails from "./movies-details";
+import MoviesDetails from "../../components/movies-details";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams<{ movieId: string }>();

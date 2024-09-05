@@ -4,11 +4,11 @@ import qs from "query-string";
 
 import { MovieDetails } from "@/types";
 import { useLocalStorage } from "@/hooks/use-local-storage";
-import RecommendationCard from "../../../../components/cards/recommendation-card";
+import RecommendationCard from "../../../components/cards/recommendation-card";
 import { useMovieRecommendations } from "@/hooks/movies/use-movie-recommendations";
 import { useMovieReviews } from "@/hooks/movies/use-movie-reviews";
-import ReviewCard from "../../../../components/cards/review-card";
-import { Button } from "../../../../components/ui/button";
+import ReviewCard from "../../../components/cards/review-card";
+import { Button } from "../../../components/ui/button";
 import usePagination from "@/hooks/use-pagination";
 import MovieDetailsCard from "@/pages/movies/components/movie-details-card";
 
