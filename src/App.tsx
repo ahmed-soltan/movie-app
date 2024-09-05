@@ -22,7 +22,6 @@ import MovieDetailsPage from "./pages/movies/pages/MovieDetailsPage/MovieDetails
 import PopularMoviesPage from "./pages/movies/pages/PopularMoviesPage/PopularMoviesPage";
 import TopRatedMoviesPage from "./pages/movies/pages/TopRatedMoviesPage/TopRatedMoviesPage";
 import UpComingMoviesPage from "./pages/movies/pages/upcomingMoviesPage/UpComingMoviesPage";
-import SeasonDetailsPage from "./pages/tv/pages/SeasonDetailsPage.tsx/SeasonDetailsPage";
 import EpisodeDetailsPage from "./pages/tv/pages/EpisodeDetailsPage/EpisodeDetailsPage";
 
 function App() {
@@ -43,10 +42,6 @@ function App() {
             />
             <Route path="/tv/series" element={<SeriesPage />} />
             <Route path="/tv/series/:id" element={<SeriesDetailsPage />} />
-            <Route
-              path="/tv/series/:id/season/:seasonNumber"
-              element={<SeasonDetailsPage />}
-            />
             <Route
               path="/tv/series/:id/season/:seasonNumber/episode/:episodeNumber"
               element={<EpisodeDetailsPage />}
