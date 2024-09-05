@@ -5,7 +5,6 @@ import { IoStar } from "react-icons/io5";
 
 import { baseImageUrl } from "@/shared/flags";
 import { MediaItemType } from "@/types";
-import { Link } from "react-router-dom";
 
 interface RecommendationCardProps {
   recommendation: MediaItemType;
