@@ -33,7 +33,7 @@ const SeriesDetailsPage = () => {
 
   return (
     <div className="text-white">
-      <div className="container flex flex-col gap-10">
+      <div className="p-5 flex flex-col gap-10">
         {seriesVideos && seriesVideos.results.length > 0 ? (
           <VideoPlayer
             videoKey={seriesVideos?.results[currentIndex]?.key!}

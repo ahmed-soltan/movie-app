@@ -34,7 +34,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div className="text-white">
-      <div className="container flex flex-col gap-10">
+      <div className="flex flex-col gap-10 p-5">
         {movieVideos && movieVideos.results.length > 0 ? (
           <VideoPlayer
             videoKey={movieVideos?.results[currentIndex]?.key!}
@@ -44,7 +44,13 @@ const MovieDetailsPage = () => {
             handleAutoPlay={handleAutoPlay}
           />
         ) : (
-          <img src={`${baseImageUrl}${data.poster_path}`} alt={data.original_name} className="w-full h-[600px]"/>
+          <img
+            src={`${baseImageUrl}${data.poster_path}`}
+            alt={data.original_name}
+            className="w-full h-[600px]"
+            loading="lazy"
+
+          />
         )}
         <MoviesDetails movie={data} />
       </div>

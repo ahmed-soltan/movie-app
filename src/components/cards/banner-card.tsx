@@ -74,6 +74,7 @@ export const BannerCard = ({ movie }: BannerCardProps) => {
               className="w-full h-[300px] md:h-[600px] object-top rounded-xl"
               src={`${baseImageUrl}/${movie.poster_path}`}
               alt={movie.original_title}
+              loading="lazy"
             />
           </div>
         </CardContent>

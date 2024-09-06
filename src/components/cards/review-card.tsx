@@ -29,6 +29,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
         }
         alt=""
         className="w-10 h-10 rounded-full"
+        loading="lazy"
       />
       <div className="flex flex-col items-start gap-2">
         <div>

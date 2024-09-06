@@ -25,6 +25,8 @@ const RecommendationCard = React.memo(
             src={`${baseImageUrl}${recommendation.poster_path}`}
             alt={recommendation.original_title || recommendation.original_name}
             className="h-20 w-16"
+            loading="lazy"
+
           />
         </div>
         <div className="flex flex-col items-start gap-1 p-1">

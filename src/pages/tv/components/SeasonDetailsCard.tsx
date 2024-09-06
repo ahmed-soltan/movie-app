@@ -19,6 +19,8 @@ const SeasonDetailsCard = ({ season }: SeasonDetailsCardProps) => {
             src={season.poster_path ? `${baseImageUrl}${season.poster_path}` : unknownSeason}
             alt={season.name}
             className="h-[300px] w-full object-cover"
+            loading="lazy"
+
           />
         </div>
       </div>

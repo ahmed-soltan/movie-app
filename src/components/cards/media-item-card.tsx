@@ -18,6 +18,8 @@ export const MediaItemCard = ({ media, path }: MediaItemCardProps) => {
         src={`${baseImageUrl}/${media.poster_path}`}
         alt={media.original_title}
         className="w-full max-h-[300px]"
+        loading="lazy"
+
       />
       <h1 className="text-slate-300 text-lg line-clamp-1">
         {media.original_title || media.original_name}

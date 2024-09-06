@@ -28,6 +28,7 @@ const MovieDetailsCard = ({ movie }: MovieDetailsCardProps) => {
             src={`${baseImageUrl}${movie.poster_path}`}
             alt={movie.original_title}
             className="h-[300px] w-full object-cover"
+            loading="lazy"
           />
         </div>
       </div>

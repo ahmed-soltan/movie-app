@@ -60,7 +60,7 @@ const EpisodeDetailsPage = () => {
 
   return (
     <div className="text-white">
-      <div className="container flex flex-col gap-10">
+      <div className="p-5 flex flex-col gap-10">
         <div className="flex items-start gap-2 flex-wrap-reverse lg:flex-nowrap w-full">
           <EpisodesList
             seriesId={id!}
@@ -83,6 +83,7 @@ const EpisodeDetailsPage = () => {
               }
               alt=""
               className="w-full h-full"
+              loading="lazy"
             />
           )}
         </div>

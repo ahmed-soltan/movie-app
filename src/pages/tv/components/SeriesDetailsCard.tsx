@@ -16,7 +16,7 @@ interface SeriesDetailsCardProps {
 
 const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
   const { addMediaToFavorites, addMediaToWatchList } = useLocalStorage();
-  
+
   const handleAddFavorite = () => addMediaToFavorites(series);
   const handleAddWatchList = () => addMediaToWatchList(series);
 
@@ -28,6 +28,7 @@ const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
             src={`${baseImageUrl}${series.poster_path}`}
             alt={series.name}
             className="h-[300px] w-full object-cover"
+            loading="lazy"
           />
         </div>
       </div>
@@ -67,7 +68,7 @@ const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
         </div>
         <div className="text-[#777] text-sm">
           genres :{" "}
-          {series.genres.map((genre:any) => (
+          {series.genres.map((genre: any) => (
             <Link
               to={`/series?genres=${genre}`}
               key={genre.id}
@@ -79,7 +80,7 @@ const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
         </div>
         <div className="text-[#777] text-sm">
           Spoken Languages :{" "}
-          {series.spoken_languages.map((language:any) => (
+          {series.spoken_languages.map((language: any) => (
             <span key={language.iso_639_1} className="text-[#9d6ae4]">
               {language.name}
             </span>
@@ -104,8 +105,10 @@ const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
         </div>
         <div className="text-[#777] text-sm">
           Production Companies:{" "}
-          {series.production_companies.map((company:any) => (
-            <span className="text-[#9d6ae4]" key={company.id}>{company.name} , </span>
+          {series.production_companies.map((company: any) => (
+            <span className="text-[#9d6ae4]" key={company.id}>
+              {company.name} ,{" "}
+            </span>
           ))}
         </div>
         <Link
@@ -118,23 +121,23 @@ const SeriesDetailsCard = ({ series }: SeriesDetailsCardProps) => {
           More Info
         </Link>
         <div className="flex lg:hidden items-center gap-2 flex-wrap sm:flex-nowrap">
-            <Button
-              variant={"default"}
-              className="flex items-center w-full"
-              onClick={handleAddWatchList}
-            >
-              <MdOutlineLiveTv className="w-5 h-5 text-white mr-2" />
-              Add to Watch List
-            </Button>
-            <Button
-              variant={"primary"}
-              className="flex items-center w-full"
-              onClick={handleAddFavorite}
-            >
-              <FaHeartCirclePlus className="w-4 h-4 text-white mr-2" />
-              Add to Favorite List
-            </Button>
-          </div>
+          <Button
+            variant={"default"}
+            className="flex items-center w-full"
+            onClick={handleAddWatchList}
+          >
+            <MdOutlineLiveTv className="w-5 h-5 text-white mr-2" />
+            Add to Watch List
+          </Button>
+          <Button
+            variant={"primary"}
+            className="flex items-center w-full"
+            onClick={handleAddFavorite}
+          >
+            <FaHeartCirclePlus className="w-4 h-4 text-white mr-2" />
+            Add to Favorite List
+          </Button>
+        </div>
       </div>
     </div>
   );

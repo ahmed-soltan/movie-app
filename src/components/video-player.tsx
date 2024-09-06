@@ -52,7 +52,6 @@ const VideoPlayer: React.FC<VideoProps> = ({
         <iframe
           id={`youtube-player-${videoKey}`}
           width="100%"
-          height="700px"
           src={videoUrl}
           title="Video Player"
           frameBorder="0"
@@ -60,6 +59,7 @@ const VideoPlayer: React.FC<VideoProps> = ({
           allowFullScreen
           onError={handleIframeError}
           onLoad={handleIframeLoad}
+          className="h-[350px] md:h-[700px]"
         ></iframe>
       )}
       <Button onClick={handleAutoPlay} className="hidden">

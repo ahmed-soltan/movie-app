@@ -18,7 +18,7 @@ export const useMoviesGenres = (params?: string) => {
 
   useEffect(() => {
     dispatch(fetchMoviesGenre(params));
-  }, [params]);
+  }, []);
 
   return {
     loading: moviesState === "idle",

@@ -23,6 +23,7 @@ const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
               }
               alt={episode.name}
               className="h-[300px] w-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -79,6 +80,7 @@ const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
                   }
                   alt=""
                   className="w-32 h-32"
+                  loading="lazy"
                 />
                 <span className="text-base">{person.name}</span>
               </div>
@@ -102,6 +104,7 @@ const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
                   }
                   alt=""
                   className="w-32 h-32"
+                  loading="lazy"
                 />
                 <span className="text-base">{star.name}</span>
               </div>

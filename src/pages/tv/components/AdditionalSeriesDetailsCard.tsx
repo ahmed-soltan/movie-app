@@ -2,7 +2,7 @@ import { TvSeriesDetails } from "@/types";
 import unknown from "../../../assets/unknown.jpeg";
 import { baseImageUrl } from "@/shared/flags";
 import { Separator } from "@/components/ui/separator";
-import unknownImage from "../../../assets/unknownImage.png"
+import unknownImage from "../../../assets/unknownImage.png";
 import { Link } from "react-router-dom";
 
 interface AdditionalSeriesDetailsCardProps {
@@ -15,7 +15,7 @@ const AdditionalSeriesDetailsCard = ({
   return (
     <div className="flex flex-col items-start w-full gap-8">
       <h1 className="text-3xl w-full p-5 bg-[#1c1c1c]">Additional Details</h1>
-      {series.created_by.length>0 && (
+      {series.created_by.length > 0 && (
         <div className="flex flex-col items-start gap-4">
           <h1 className="text-2xl font-semibold">Creators: </h1>
           <div className="flex items-center gap-3">
@@ -32,6 +32,7 @@ const AdditionalSeriesDetailsCard = ({
                   }
                   alt=""
                   className="w-32 h-32"
+                  loading="lazy"
                 />
                 <span className="text-base">{creator.name}</span>
               </div>
@@ -61,6 +62,7 @@ const AdditionalSeriesDetailsCard = ({
                 }
                 alt=""
                 className="w-60 h-60"
+                loading="lazy"
               />
 
               <span className="text-base hover:text-[#9667d8]">
@@ -91,6 +93,7 @@ const AdditionalSeriesDetailsCard = ({
               }
               alt=""
               className="w-60 h-60"
+              loading="lazy"
             />
             <span className="text-base hover:text-[#9667d8]">
               {series.last_episode_to_air.name}
@@ -116,6 +119,7 @@ const AdditionalSeriesDetailsCard = ({
               }
               alt=""
               className="w-60 h-60"
+              loading="lazy"
             />
             <span className="text-base hover:text-[#9667d8]">
               {series.next_episode_to_air.name}
