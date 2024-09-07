@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import { MdOutlineLanguage } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
@@ -60,13 +59,13 @@ export const BannerCard = ({ movie }: BannerCardProps) => {
               {movie.overview}
             </p>
             <Button variant={"primary"} asChild size={"lg"}>
-              <Link
-                to={`/movies/${movie.id}`}
+              <a
+                href={`/movies/${movie.id}`}
                 className="flex items-center text-3xl"
               >
                 <FaPlay className="w-5 h-5 mr-2" />
                 Play Now
-              </Link>
+              </a>
             </Button>
           </div>
           <div className="w-full relative max-w-[1000px] rounded-xl">

@@ -1,6 +1,4 @@
-// src/hooks/useSearch.ts
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch } from "@/store";
@@ -11,24 +9,29 @@ import {
   getSearchStatus,
   getSearchError,
 } from "@/features/actions/searchSlice";
-import { debounce } from "@/utils/debounce";
 
 export const useSearch = (query: string) => {
+  const [debouncedQuery, setDebouncedQuery] = useState(query);
   const searchResults = useSelector(getSearchResults);
   const status = useSelector(getSearchStatus);
   const error = useSelector(getSearchError);
-
   const dispatch = useDispatch<AppDispatch>();
 
-  const debouncedSearch = debounce((query: string) => {
-    if (query) {
-      dispatch(searchMulti(query));
-    }
-  }, 500);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 500);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [query]);
 
   useEffect(() => {
-    debouncedSearch(query);
-  }, [query]);
+    if (debouncedQuery.trim()) {
+      dispatch(searchMulti(debouncedQuery));
+    }
+  }, [debouncedQuery, dispatch]);
 
   useEffect(() => {
     if (status === "failed" && error) {

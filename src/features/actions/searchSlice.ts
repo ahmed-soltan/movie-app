@@ -7,19 +7,24 @@ import { MediaItemType } from "@/types";
 export const searchMulti = createAsyncThunk(
   "search/searchMulti",
   async (query: string) => {
-    const data = await fetchData(`/search/multi?query=${query}`);
+    const data = await fetchData(`/search/movie` , query);
     return data;
   }
 );
 
 export interface SearchState {
-  searchResults: MediaItemType[];
+  searchResults: {
+    page: number;
+    results: MediaItemType[];
+    total_pages: number;
+    total_results: number;
+  } | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error?: string | null;
 }
 
 const initialState: SearchState = {
-  searchResults: [],
+  searchResults: null,
   status: "idle",
   error: null,
 };
@@ -34,7 +39,7 @@ export const searchSlice = createSlice({
     });
     builder.addCase(searchMulti.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.searchResults = action.payload.results;
+      state.searchResults = action.payload;
     });
     builder.addCase(searchMulti.rejected, (state, action) => {
       state.status = "failed";

@@ -1,37 +1,39 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong } from "react-icons/fa6";
 import queryString from "query-string";
 
 import { MediaItemCard } from "@/components/cards/media-item-card";
 import { Button } from "@/components/ui/button";
 import { getPageNumbers } from "@/utils/get-pages";
+import { filterMediaByGenre } from "@/utils/filter-media-by-genre";
 import usePagination from "@/hooks/use-pagination";
 import Genres from "@/components/genres";
-import { filterMediaByGenre } from "@/utils/filter-media-by-genre";
 
 interface MovieListProps {
   fetchMovies: () => { data: any };
   handleGetPageNumber: (params: string) => void;
   title: string;
-  path:"/movie"|"/tv/series"
+  path: "/movies" | "/tv/series";
 }
 
 const MovieList = ({
   fetchMovies,
   title,
   handleGetPageNumber,
-  path
+  path,
 }: MovieListProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [filteredData, setFilteredData] = useState<any[]>([]);
 
-  
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
+
   const { page, nextPage, prevPage, setPage } = usePagination(pageFromUrl);
-  
-  const params = queryString.stringify({ page });
-  
+
+  const params = queryString.stringify({ page});
+
   const { data } = fetchMovies();
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const MovieList = ({
       setFilteredData(data.results);
     }
   }, [selectedGenre, data]);
-  
+
   useEffect(() => {
     setSearchParams({ page: page.toString() });
     handleGetPageNumber(params);
@@ -62,19 +64,20 @@ const MovieList = ({
   return (
     <div className="flex flex-col items-start gap-5 p-5">
       <div className="flex items-center justify-between w-full flex-wrap md:flex-nowrap gap-5">
-        <h1 className="text-2xl md:text-4xl text-white font-bold">
-            {title}
-        </h1>
+        <h1 className="text-2xl md:text-4xl text-white font-bold">{title}</h1>
         <Genres selectGenre={selectGenre} />
       </div>
-      <div className="flex items-start gap-6 flex-wrap justify-center lg:justify-start">
+      <div className="flex items-start gap-6 flex-wrap justify-center xl:justify-start">
         {filteredData.map((result) => (
           <MediaItemCard key={result.id} media={result} path={path} />
         ))}
       </div>
       <div className="flex items-center justify-center gap-2 text-white mt-4 w-full">
         <Button variant={"primary"} onClick={prevPage} disabled={page === 1}>
-          Previous
+          <span className="block md:hidden">
+            <FaArrowLeftLong className="w-3 h-3" />
+          </span>
+          <span className="hidden md:block">Previous</span>
         </Button>
         <div
           className="w-[300px] md:w-[470px] overflow-x-auto flex items-center gap-1"
@@ -99,7 +102,10 @@ const MovieList = ({
           onClick={nextPage}
           disabled={totalPages <= page}
         >
-          Next
+          <span className="block md:hidden">
+            <FaArrowRightLong className="w-3 h-3" />
+          </span>
+          <span className="hidden md:block">Next</span>
         </Button>
       </div>
     </div>

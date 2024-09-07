@@ -3,26 +3,30 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { store } from "./store";
 import { Toaster } from "./components/ui/toaster";
-import { GuardedRoute } from "./components/GuardedRoute";
-import { ReverseGuardedRoute } from "./components/ReverseGuardedRoute";
+import {
+  GuardedRoute,
+  ReverseGuardedRoute,
+} from "./front-office/profile/middleware";
 
-import HomePage from "./pages/home/pages/homePage";
-import MoviesPage from "./pages/movies/pages/moviesPage";
+import HomePage from "./front-office/home/pages/homePage";
+import MoviesPage from "./front-office/movies/pages/moviesPage";
 import BaseLayout from "./layout/base-layout";
-import ProfilePage from "./pages/profile/pages/ProfilePage";
-import FavoriteListPage from "./pages/profile/pages/FavoriteListPage";
-import WatchListPage from "./pages/profile/pages/WatchListPage";
-import HistoryListPage from "./pages/profile/pages/HistoryListPage";
-import LoginPage from "./pages/profile/pages/loginPage/LoginPage";
-import RegisterPage from "./pages/profile/pages/registerPage/RegisterPage";
-import SeriesDetailsPage from "./pages/tv/pages/SeriesDetailsPage/SeriesDetailsPage";
-import SeriesPage from "./pages/tv/pages/SeriesPage/SeriesPage";
-import PlayingNowMoviesPage from "./pages/movies/pages/PlayingNowMoviesPage/PlayingNowMoviesPage";
-import MovieDetailsPage from "./pages/movies/pages/MovieDetailsPage/MovieDetailsPage";
-import PopularMoviesPage from "./pages/movies/pages/PopularMoviesPage/PopularMoviesPage";
-import TopRatedMoviesPage from "./pages/movies/pages/TopRatedMoviesPage/TopRatedMoviesPage";
-import UpComingMoviesPage from "./pages/movies/pages/upcomingMoviesPage/UpComingMoviesPage";
-import EpisodeDetailsPage from "./pages/tv/pages/EpisodeDetailsPage/EpisodeDetailsPage";
+import ProfilePage from "./front-office/profile/pages/ProfilePage/ProfilePage";
+import FavoriteListPage from "./front-office/profile/pages/FavoriteListPage/FavoriteListPage";
+import WatchListPage from "./front-office/profile/pages/WatchListPage/WatchListPage";
+import HistoryListPage from "./front-office/profile/pages/HistoryListPage/HistoryListPage";
+import LoginPage from "./front-office/profile/pages/loginPage/LoginPage";
+import RegisterPage from "./front-office/profile/pages/registerPage/RegisterPage";
+import SeriesDetailsPage from "./front-office/tv/pages/SeriesDetailsPage/SeriesDetailsPage";
+import SeriesPage from "./front-office/tv/pages/SeriesPage/SeriesPage";
+import PlayingNowMoviesPage from "./front-office/movies/pages/PlayingNowMoviesPage/PlayingNowMoviesPage";
+import MovieDetailsPage from "./front-office/movies/pages/MovieDetailsPage/MovieDetailsPage";
+import PopularMoviesPage from "./front-office/movies/pages/PopularMoviesPage/PopularMoviesPage";
+import TopRatedMoviesPage from "./front-office/movies/pages/TopRatedMoviesPage/TopRatedMoviesPage";
+import UpComingMoviesPage from "./front-office/movies/pages/upcomingMoviesPage/UpComingMoviesPage";
+import EpisodeDetailsPage from "./front-office/tv/pages/EpisodeDetailsPage/EpisodeDetailsPage";
+import NotFoundPage from "./layout/not-found-page";
+import ProfileLayout from "./layout/profile-layout/profile-layout";
 
 function App() {
   return (
@@ -47,38 +51,6 @@ function App() {
               element={<EpisodeDetailsPage />}
             />
             <Route
-              path="/profile"
-              element={
-                <GuardedRoute>
-                  <ProfilePage />
-                </GuardedRoute>
-              }
-            />
-            <Route
-              path="/profile/favorite-list"
-              element={
-                <GuardedRoute>
-                  <FavoriteListPage />
-                </GuardedRoute>
-              }
-            />
-            <Route
-              path="/profile/watch-list"
-              element={
-                <GuardedRoute>
-                  <WatchListPage />
-                </GuardedRoute>
-              }
-            />
-            <Route
-              path="/profile/history-list"
-              element={
-                <GuardedRoute>
-                  <HistoryListPage />
-                </GuardedRoute>
-              }
-            />
-            <Route
               path="/profile/login"
               element={
                 <ReverseGuardedRoute>
@@ -92,6 +64,47 @@ function App() {
                 <ReverseGuardedRoute>
                   <RegisterPage />
                 </ReverseGuardedRoute>
+              }
+            />
+            <Route path="*/*" element={<NotFoundPage />} />
+            <Route
+              path="/profile"
+              element={
+                <ProfileLayout>
+                  <GuardedRoute>
+                    <ProfilePage />
+                  </GuardedRoute>
+                </ProfileLayout>
+              }
+            />
+            <Route
+              path="/profile/favorite-list"
+              element={
+                <ProfileLayout>
+                  <GuardedRoute>
+                    <FavoriteListPage />
+                  </GuardedRoute>
+                </ProfileLayout>
+              }
+            />
+            <Route
+              path="/profile/watch-list"
+              element={
+                <ProfileLayout>
+                  <GuardedRoute>
+                    <WatchListPage />
+                  </GuardedRoute>
+                </ProfileLayout>
+              }
+            />
+            <Route
+              path="/profile/history-list"
+              element={
+                <ProfileLayout>
+                  <GuardedRoute>
+                    <HistoryListPage />
+                  </GuardedRoute>
+                </ProfileLayout>
               }
             />
           </Routes>

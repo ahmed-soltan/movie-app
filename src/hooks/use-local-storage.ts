@@ -85,8 +85,10 @@ export const useLocalStorage = () => {
         toast({
           title: "Removed from List",
           description: `This media is removed from your ${ListName} successfully`,
-          variant: "destructive",
+          variant: "default",
         });
+
+        return updatedList
       } catch (error) {
         console.error(`Error accessing localStorage for ${ListName}:`, error);
       }

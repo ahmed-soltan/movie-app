@@ -2,11 +2,11 @@ import { FaRegUser } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
-import { IoEnterOutline } from "react-icons/io5";
 import { IoPersonAddOutline } from "react-icons/io5";
+import { IoEnterOutline } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useUser } from "@/hooks/use-user";
 import {
@@ -52,49 +52,49 @@ const UserButton = () => {
               className="focus:bg-slate-500/20 focus:text-white"
               asChild
             >
-              <Link
+              <a
                 className="flex items-center text-md cursor-pointer"
-                to="/profile"
+                href="/profile"
               >
                 <FaRegUser className="w-4 h-4 mr-2" />
                 Profile
-              </Link>
+              </a>
             </DropdownMenuItem>
             <DropdownMenuItem
               className="focus:bg-slate-500/20 focus:text-white"
               asChild
             >
-              <Link
+              <a
                 className="flex items-center text-md cursor-pointer"
-                to="/profile/favorite-list"
+                href="/profile/favorite-list"
               >
                 <FaRegHeart className="w-4 h-4 mr-2" />
                 Favorite List
-              </Link>
+              </a>
             </DropdownMenuItem>
             <DropdownMenuItem
               className="focus:bg-slate-500/20 focus:text-white"
               asChild
             >
-              <Link
+              <a
                 className="flex items-center text-md cursor-pointer"
-                to="/profile/watch-list"
+                href="/profile/watch-list"
               >
                 <FaRegEye className="w-4 h-4 mr-2" />
                 Watch List
-              </Link>
+              </a>
             </DropdownMenuItem>
             <DropdownMenuItem
               className="focus:bg-slate-500/20 focus:text-white"
               asChild
             >
-              <Link
+              <a
                 className="flex items-center text-md cursor-pointer"
-                to="/profile/history-list"
+                href="/profile/history-list"
               >
                 <FaHistory className="w-4 h-4 mr-2" />
                 History List
-              </Link>
+              </a>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
 
@@ -113,25 +113,25 @@ const UserButton = () => {
               className="focus:bg-slate-500/20 focus:text-white"
               asChild
             >
-              <Link
+              <a
                 className="flex items-center text-md cursor-pointer"
-                to="/profile/login"
+                href="/profile/login"
               >
                 <IoEnterOutline className="w-4 h-4 mr-2" />
                 Login
-              </Link>
+              </a>
             </DropdownMenuItem>
             <DropdownMenuItem
               className="focus:bg-slate-500/20 focus:text-white"
               asChild
             >
-              <Link
+              <a
                 className="flex items-center text-md cursor-pointer"
-                to="/profile/register"
+                href="/profile/register"
               >
                 <IoPersonAddOutline className="w-4 h-4 mr-2" />
                 Create Account
-              </Link>
+              </a>
             </DropdownMenuItem>
           </>
         )}
