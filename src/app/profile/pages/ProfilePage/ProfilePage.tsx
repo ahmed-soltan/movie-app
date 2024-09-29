@@ -14,9 +14,9 @@ const ProfilePage = () => {
   return (
     <div className="flex flex-col items-start gap-5 w-full">
       {!isEditing && (
-          <div className="flex items-start gap-5 mt-5 w-full">
+          <div className="flex items-start gap-5 mt-5 w-full flex-wrap-reverse md:flex-nowrap">
             <UserDetails/>
-            <Button variant={"primary"} onClick={handleEditProfile}>Edit Profile</Button>
+            <Button variant={"primary"} onClick={handleEditProfile} className="ml-auto ">Edit Profile</Button>
           </div>
       )}
       {isEditing && (

@@ -8,8 +8,8 @@ import unknownImage from "../../../../assets/unknownImage.png";
 import { baseImageUrl } from "@/shared/flags";
 import EpisodesList from "../../components/EpisodesList";
 import { useSeasonDetails } from "@/hooks/tv/use-season-details";
-import SeasonDetails from "@/front-office/tv/components/season-details";
-import EpisodeDetails from "@/front-office/tv/components/episode-details";
+import SeasonDetails from "@/app/tv/components/season-details";
+import EpisodeDetails from "@/app/tv/components/episode-details";
 import { Separator } from "@/components/ui/separator";
 
 const EpisodeDetailsPage = () => {

@@ -1,4 +1,4 @@
-import SeasonDetailsCard from "@/front-office/tv/components/SeasonDetailsCard";
+import SeasonDetailsCard from "@/app/tv/components/SeasonDetailsCard";
 import { Season } from "@/types";
 
 

@@ -20,19 +20,22 @@ const EpisodesList = ({
 
   return (
     <div
-      className="w-full lg:max-w-[300px] flex flex-col gap-4  "
+      className="w-full lg:max-w-[300px] flex flex-col gap-4"
       style={{ scrollbarWidth: "none" }}
     >
       <h1 className="w-full bg-[#1c1c1c] p-3 text-xl text-white">
         Current Episode: {currentEpisode}
       </h1>
-      <div className="flex items-center flex-wrap gap-2 max-h-[560px] overflow-y-auto shadow-lg">
+      <div
+        className="flex items-center flex-wrap gap-2 max-h-[560px] overflow-y-auto shadow-lg"
+        style={{ scrollbarWidth: "none" }}
+      >
         {episodes.map((number) => (
           <Button
             key={number}
             asChild
             variant={currentEpisode === number ? "primary" : "default"}
-            className="w-[68px]"
+            className="w-[63px]"
           >
             <a
               href={`/tv/series/${seriesId}/season/${season_number}/episode/${number}`}

@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { useVideos } from "@/hooks/use-videos";
 import VideoPlayer from "@/components/video-player";
 import { useSeriesDetails } from "@/hooks/tv/use-series-details";
-import SeriesDetails from "@/front-office/tv/components/series-details";
+import SeriesDetails from "@/app/tv/components/series-details";
+import { baseImageUrl } from "@/shared/flags";
 
 const SeriesDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -43,7 +44,7 @@ const SeriesDetailsPage = () => {
             handleAutoPlay={handleAutoPlay}
           />
         ) : (
-          <p>No valid videos available</p>
+          <img src={`${baseImageUrl}${data.poster_path}`} alt="" className="w-full h-[350px] md:h-[700px]"/>
         )}
         <SeriesDetails series={data} />
       </div>

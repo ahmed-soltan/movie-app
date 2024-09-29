@@ -9,7 +9,7 @@ const UserDetails = () => {
   }
 
   return (
-    <div className="flex items-start gap-4 text-[#999] w-full">
+    <div className="flex items-start flex-wrap gap-4 text-[#999] w-full">
       <img
         src={user?.photoUrl || unknown}
         alt={user.username}

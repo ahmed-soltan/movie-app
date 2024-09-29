@@ -10,7 +10,7 @@ import { useMovieReviews } from "@/hooks/movies/use-movie-reviews";
 import ReviewCard from "../../../components/cards/review-card";
 import { Button } from "../../../components/ui/button";
 import usePagination from "@/hooks/use-pagination";
-import MovieDetailsCard from "@/front-office/movies/components/movie-details-card";
+import MovieDetailsCard from "@/app/movies/components/movie-details-card";
 
 interface MoviesDetailsProps {
   movie: MovieDetails;

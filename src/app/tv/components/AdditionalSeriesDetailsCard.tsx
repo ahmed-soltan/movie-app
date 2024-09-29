@@ -11,6 +11,7 @@ interface AdditionalSeriesDetailsCardProps {
 const AdditionalSeriesDetailsCard = ({
   series,
 }: AdditionalSeriesDetailsCardProps) => {
+  console.log(series);
   return (
     <div className="flex flex-col items-start w-full gap-8">
       <h1 className="text-3xl w-full p-5 bg-[#1c1c1c]">Additional Details</h1>
@@ -102,32 +103,34 @@ const AdditionalSeriesDetailsCard = ({
             </span>
           </a>
         </div>
-        <div className="flex flex-col items-start gap-4">
-          <h1 className="text-xl font-semibold text-center md:text-left w-full">
-            Next Episode To Air{" "}
-          </h1>
-          <a
-            href={`/tv/series/${series.id}/season/${series.next_episode_to_air.season_number}/episode/${series.last_episode_to_air.episode_number}`}
-            className="flex flex-col gap-2 items-center"
-          >
-            <img
-              src={
-                series.next_episode_to_air.still_path
-                  ? `${baseImageUrl}${series.next_episode_to_air.still_path}`
-                  : unknownImage
-              }
-              alt=""
-              className="w-60 h-60"
-              loading="lazy"
-            />
-            <span className="text-base hover:text-[#9667d8]">
-              {series.next_episode_to_air.name}
-            </span>
-            <span className="text-sm text-[#888]">
-              {series.next_episode_to_air.air_date}
-            </span>
-          </a>
-        </div>
+        {series.next_episode_to_air && (
+          <div className="flex flex-col items-start gap-4">
+            <h1 className="text-xl font-semibold text-center md:text-left w-full">
+              Next Episode To Air{" "}
+            </h1>
+            <a
+              href={`/tv/series/${series.id}/season/${series.next_episode_to_air.season_number}/episode/${series.last_episode_to_air.episode_number}`}
+              className="flex flex-col gap-2 items-center"
+            >
+              <img
+                src={
+                  series.next_episode_to_air.still_path
+                    ? `${baseImageUrl}${series.next_episode_to_air.still_path}`
+                    : unknownImage
+                }
+                alt=""
+                className="w-60 h-60"
+                loading="lazy"
+              />
+              <span className="text-base hover:text-[#9667d8]">
+                {series.next_episode_to_air.name}
+              </span>
+              <span className="text-sm text-[#888]">
+                {series.next_episode_to_air.air_date}
+              </span>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

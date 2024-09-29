@@ -6,25 +6,25 @@ import { Toaster } from "./components/ui/toaster";
 import {
   GuardedRoute,
   ReverseGuardedRoute,
-} from "./front-office/profile/middleware";
+} from "./app/profile/middleware";
 
-import HomePage from "./front-office/home/pages/homePage";
-import MoviesPage from "./front-office/movies/pages/moviesPage";
+import HomePage from "./app/home/pages/homePage";
+import MoviesPage from "./app/movies/pages/moviesPage";
 import BaseLayout from "./layout/base-layout";
-import ProfilePage from "./front-office/profile/pages/ProfilePage/ProfilePage";
-import FavoriteListPage from "./front-office/profile/pages/FavoriteListPage/FavoriteListPage";
-import WatchListPage from "./front-office/profile/pages/WatchListPage/WatchListPage";
-import HistoryListPage from "./front-office/profile/pages/HistoryListPage/HistoryListPage";
-import LoginPage from "./front-office/profile/pages/loginPage/LoginPage";
-import RegisterPage from "./front-office/profile/pages/registerPage/RegisterPage";
-import SeriesDetailsPage from "./front-office/tv/pages/SeriesDetailsPage/SeriesDetailsPage";
-import SeriesPage from "./front-office/tv/pages/SeriesPage/SeriesPage";
-import PlayingNowMoviesPage from "./front-office/movies/pages/PlayingNowMoviesPage/PlayingNowMoviesPage";
-import MovieDetailsPage from "./front-office/movies/pages/MovieDetailsPage/MovieDetailsPage";
-import PopularMoviesPage from "./front-office/movies/pages/PopularMoviesPage/PopularMoviesPage";
-import TopRatedMoviesPage from "./front-office/movies/pages/TopRatedMoviesPage/TopRatedMoviesPage";
-import UpComingMoviesPage from "./front-office/movies/pages/upcomingMoviesPage/UpComingMoviesPage";
-import EpisodeDetailsPage from "./front-office/tv/pages/EpisodeDetailsPage/EpisodeDetailsPage";
+import ProfilePage from "./app/profile/pages/ProfilePage/ProfilePage";
+import FavoriteListPage from "./app/profile/pages/FavoriteListPage/FavoriteListPage";
+import WatchListPage from "./app/profile/pages/WatchListPage/WatchListPage";
+import HistoryListPage from "./app/profile/pages/HistoryListPage/HistoryListPage";
+import LoginPage from "./app/profile/pages/loginPage/LoginPage";
+import RegisterPage from "./app/profile/pages/registerPage/RegisterPage";
+import SeriesDetailsPage from "./app/tv/pages/SeriesDetailsPage/SeriesDetailsPage";
+import SeriesPage from "./app/tv/pages/SeriesPage/SeriesPage";
+import PlayingNowMoviesPage from "./app/movies/pages/PlayingNowMoviesPage/PlayingNowMoviesPage";
+import MovieDetailsPage from "./app/movies/pages/MovieDetailsPage/MovieDetailsPage";
+import PopularMoviesPage from "./app/movies/pages/PopularMoviesPage/PopularMoviesPage";
+import TopRatedMoviesPage from "./app/movies/pages/TopRatedMoviesPage/TopRatedMoviesPage";
+import UpComingMoviesPage from "./app/movies/pages/upcomingMoviesPage/UpComingMoviesPage";
+import EpisodeDetailsPage from "./app/tv/pages/EpisodeDetailsPage/EpisodeDetailsPage";
 import NotFoundPage from "./layout/not-found-page";
 import ProfileLayout from "./layout/profile-layout/profile-layout";
 

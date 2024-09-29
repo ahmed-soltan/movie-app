@@ -10,8 +10,8 @@ import { Button } from "../../../components/ui/button";
 import usePagination from "@/hooks/use-pagination";
 import { useSeriesRecommendations } from "@/hooks/tv/use-series-recommendations";
 import { useSeriesReviews } from "@/hooks/tv/use-series-reviews";
-import SeriesDetailsCard from "@/front-office/tv/components/SeriesDetailsCard";
-import AdditionalSeriesDetailsCard from "@/front-office/tv/components/AdditionalSeriesDetailsCard";
+import SeriesDetailsCard from "@/app/tv/components/SeriesDetailsCard";
+import AdditionalSeriesDetailsCard from "@/app/tv/components/AdditionalSeriesDetailsCard";
 
 interface SeriesDetailsProps {
   series: any;

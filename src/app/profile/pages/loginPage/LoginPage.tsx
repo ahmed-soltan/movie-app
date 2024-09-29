@@ -8,24 +8,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/LoginForm";
 
-const RegisterPage = () => {
+const LoginPage = () => {
   return (
-    <div className="w-full flex items-center justify-center min-h-screen">
+    <div className="w-full flex items-center justify-center p-5">
       <Card className="w-full max-w-[500px]">
         <CardHeader className="flex items-center justify-center">
-          <CardTitle>Create Your Account</CardTitle>
-          <CardDescription>Create Account in Movie Home</CardDescription>
+          <CardTitle>Welcome Back</CardTitle>
+          <CardDescription>Sign in to Movie Home</CardDescription>
         </CardHeader>
         <CardContent>
-          <RegisterForm />
+          <LoginForm />
         </CardContent>
         <CardFooter className="flex items-center justify-center w-full gap-5">
           <p>
-            Already Have an Account? {" "}
-            <Link to="/profile/login" className="text-blue-400 text-sm">
-              Sign in
+            Don't Have an Account? {" "}
+            <Link to="/profile/register" className="text-blue-400 text-sm">
+              Create Account
             </Link>
           </p>
         </CardFooter>
@@ -34,4 +34,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
